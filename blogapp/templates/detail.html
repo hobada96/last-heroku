@@ -1,0 +1,31 @@
+{% extends 'base.html' %}  
+{% block contents%}
+    <body>
+        <main role="main" class="container">
+            <div class="row">
+                <div class="col-md-8 blog-main">
+                    <h3 class="pb-4 mb-4 font-italic border-bottom">
+                                자세한 페이지 내용을 알려주는 페이지
+                    </h3>                 
+                    {% for blog in blogs.all %}
+                    {% endfor %}
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">제목 : {{details.title}}</h2>
+                          <p>{{details.body}}</p>
+                          <p class="blog-post-meta"> {{details.pub_date}}</p>
+                        </div><!-- /.blog-post -->
+                </div><!-- /.blog-main -->
+                      <aside class="col-md-4 blog-sidebar">
+                        <div class="p-4">
+                          <h4 class="font-italic">글 목록</h4>
+                          <ol class="list-unstyled mb-0">
+                            {% for blog in blogs.all %}
+                            <li><a href="{% url 'detail' blog.id %}">{{blog.title}}</a></li>
+                            {% endfor %}
+                          </ol>
+                        </div>
+                      </aside><!-- /.blog-sidebar -->s
+                    </div><!-- /.row -->
+                  </main>
+    </body>
+{% endblock %}
